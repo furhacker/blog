@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Challenger</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="/plugin/layui/css/layui.css" media="all">
+	<style type="text/css">
+		.one {
+			border: 1px solid #E6E6E6;
+		    margin: 10px;
+		    padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="one">
+		<table id="categoryListTable" lay-filter="categoryListTable"></table>
+		<script type="text/html" id="editBar">
+	        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+	        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="look">预览</a>
+	   <!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">关闭</a>
+	        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="show">发布</a> -->
+	    </script>
+	</div>
+
+	<script src="/plugin/js/jquery-1.8.3.min.js"></script>
+	<script src="/plugin/layui/layui.js"></script>
+
+	<script>
+		layui.use(['table', 'layer', 'layedit', 'form', 'element'], function(){
+			var layer   = layui.layer,
+				layedit = layui.layedit,
+				form    = layui.form,
+				element = layui.element,    //元素操作
+				table   = layui.table;
+
+			//创建一个编辑器
+			// var editIndex = layedit.build('LAY_demo_editor');
+
+			// {:url('login/check')}
+			// layer.msg('Hello World');
+			// layer.alert('sfsd');
+			
+			// 执行渲染
+	        table.render({
+	            elem: document.getElementById('categoryListTable'),  //指定原始表格元素选择器（推荐id选择器）
+	            url: "{:url('Category/getCategoryList')}",
+	            // where: {token: 'sasasas', id: 123},  // 接口的其它参数
+	            method: 'post',
+	            type: 'json',
+	            edit:'text',    // 是否可以编辑
+	            height: 'full',    // 高度
+	            // width:871,
+	            page: true,     // 开启分页
+	            limits: [30,60,90,100],
+	            limit: 30,      // 默认采用每页30条数据
+	            // loading: true,  // 是否显示加载条
+	            even: true, //开启隔行背景
+	            cols: [[        // 设置表头
+	                {type: 'numbers'},
+	                {type: 'checkbox'},
+	                {field: 'id', title: 'ID', width:60, sort: true},
+	                {field: 'name', title: '名称', width: 160},
+	                {fixed: 'right', width:150, align:'center', toolbar: '#editBar', style:'background-color: #F2F2F2;'},
+	            ]],
+	        });
+
+	        // 监听工具条
+	        table.on('tool(categoryListTable)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+	            var data = obj.data; //获得当前行数据
+	            // console.log(data.admin_id);
+	            var layEvent = obj.event; //获得 lay-event 对应的值
+	            var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+	            // 编辑
+	            if (layEvent === 'edit') {
+	                return window.open("/Lyhtgl/State/editState/state_id/"+data.state_id);
+
+	            // 预览
+	            } else if (layEvent === 'look') {
+	                // http://www.ly.com/state/detail/type/1/id/30
+	                return window.open("/State/index/id/"+data.state_id);
+
+	            // 删除
+	            } else if (layEvent === 'del') {
+	                layer.confirm('真的删除么', function(index) {
+	                    
+	                    //向服务端发送删除指令
+	                    $.ajax({
+	                        type: 'post',
+	                        url : "/State/del",
+	                        data: {'admin_id':data.admin_id},
+	                        dataType: 'json',
+	                        success: function(result) {
+	                            if (result.status == 1) {
+	                                obj.del(); //删除对应行（tr）的DOM结构
+	                                layer.close(index);
+	                            }
+	                            layer.msg(result.message);
+	                        },
+	                        error:function(jqXHR){
+	                            layer.msg("发生错误" + jqXHR.status);
+	                        }
+	                    });
+	                });
+	            }
+	        });// 监听工具条 结束
+		});
+	</script>
+</body>
+</html>

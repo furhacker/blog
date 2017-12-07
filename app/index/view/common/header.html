@@ -1,0 +1,158 @@
+<script type="text/javascript" src="/plugin/js/jquery-1.8.3.min.js"></script>
+
+<header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">FurHacker</a>
+        <small>追逐全栈技术</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    <a href="/" {eq name="controller" value="index"} class="active" {/eq} >
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('archive/index')}" {eq name="controller" value="archive"} class="active" {/eq} >
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('category/index')}" {eq name="controller" value="category"} class="active" {/eq} >
+                        <i class="fa fa-th-list"></i>分类
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('debris/index')}" {eq name="controller" value="debris"} class="active" {/eq} >
+                        <i class="fa fa-cut"></i>随言碎语
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('about/index')}" {eq name="controller" value="about"} class="active" {/eq} >
+                        <i class="fa fa-user-o" aria-hidden="true"></i>关于我
+                    </a>
+                </li>
+            </ul>
+            <ul style="float: right;">
+                <li>
+                    <a href="javascript:;" id="theme_login">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<!-- 登陆注册 弹层 -->
+<div class="theme-popover">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+        <h4 style="margin: 0;">登录 是一种态度</h4>
+    </div>
+    <div class="theme-popbod dform">
+
+        <div class="notice" id="notice" style="float: left;">
+            <div id="notice-tit" class="notice-tit"><!-- 标签栏 -->
+                <ul>
+                    <li class="select"><a href="javascript:void(0);">登录</a></li>
+                    <li><a href="javascript:void(0);">注册</a></li>
+                </ul>
+            </div>
+            <div id="notice-con" class="notice-con" align="center">
+
+                <!-- 登陆 -->
+                <div class="mod" style="display:block; padding:25px 5px 5px 5px;">
+                    <form style="width: 250px;" action="javascript:;">
+                        <input type="text" name="username" placeholder="用户名" style="width: 200px;">
+                        <input type="password" name="pass" placeholder="密码" style="margin-bottom: 10px;width: 200px;">
+
+                        <input name="" type="checkbox" value="" checked="" style="float: left;margin-left: 20px;">
+                        <span style="float: left;font-size: 10px;line-height: 20px;">记住我</span> 
+                        <a href="#" style="float: left;margin-left: 105px;font-size: 10px;line-height: 20px;">忘记密码？</a>
+
+                        <input type="submit" value="登录" class="login-btn" style="margin-top: 14.5px;">
+                    </form>
+                </div>
+
+                <!-- 注册 -->
+                <div class="mod zhuce" style="display:none; padding:25px 5px 5px 5px;" align="center">
+                    <form>
+                        <input style="width: 200px;" type="text" name="username" placeholder="用户名"><br/>
+                        <input style="width: 200px;" type="password" name="pass" placeholder="密码"><br/>
+                        <input style="width: 200px;" type="password" name="repass" placeholder="确认密码"><br/>
+                        <input type="submit" value="注册" class="login-btn" style="">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div id="login_right">
+            <div class="third-login">
+                <i class="fa fa-qq" aria-hidden="true"></i><a href=""> QQ登录</a>
+            </div>
+            <div class="third-login">
+                <i class="fa fa-weixin" aria-hidden="true"></i> <a href="">微信登录</a>
+            </div>
+            <div class="third-login">
+                <i class="fa fa-weibo" aria-hidden="true"></i> <a href="">微博登录</a>
+            </div>
+            <div class="third-login">
+                <i class="fa fa-github" aria-hidden="true"></i> <a href="">GitHub登录</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="theme-popover-mask"></div>
+<!-- /登陆注册 弹层 -->
+
+<link rel="stylesheet" href="__FCSS__/login_tanceng.css" media="all">
+<script>
+    // 登陆注册弹层
+    jQuery(document).ready(function($) {
+        $('#theme_login').click(function(){
+            $('.theme-popover-mask').fadeIn(100);
+            $('.theme-popover').slideDown(200);
+        });
+        $('.theme-poptit .close').click(function(){
+            $('.theme-popover-mask').fadeOut(100);
+            $('.theme-popover').slideUp(200);
+        });
+        $(".theme-popover-mask").on("click", function() {
+            $('.theme-popover-mask').fadeOut(100);
+            $('.theme-popover').slideUp(200);
+        });
+    });
+    // 登录/注册 标签切换
+    function $(id){
+        return typeof id === 'string' ? document.getElementById(id) : id;
+    }
+    window.onload = function(){
+        // 获取鼠标划过或点击的标签和要切换内容的元素
+        var titles = $('notice-tit').getElementsByTagName('li'),
+            divs   = $('notice-con').getElementsByTagName('div');
+        if (titles.length != divs.length) return;
+        // 遍历titles下所有li
+        for (var i=0; i<titles.length; i++) {
+            titles[i].id = i;
+            titles[i].onclick = function(){ // 鼠标划过切换
+            //titles[i].onclick=function(){ // 点击切换
+                for (var j = 0; j < titles.length; j++) {
+                    titles[j].className   = '';
+                    divs[j].style.display = 'none';
+                }
+                // 设置当前高亮显示
+                this.className = 'select';
+                divs[this.id].style.display = 'block';
+            }
+        }
+    }
+
+    // 百度统计
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2ec74196354748fdcf2455ad76a786bf";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Challenger</title>
+    <link rel="stylesheet" href="/plugin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/plugin/highlight/styles/default.css" />
+    <script type="text/javascript" src="/plugin/highlight/highlight.pack.js"></script>
+</head>
+<body>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<pre>
+    <code class="java">
+        public class HelloWorld {
+            /**
+            * 输出一行字符串“Hello World!”
+            * @param args
+            */
+            public static void main(String[] args) {
+                 System.out.println("Hello World!");
+            }
+        }
+    </code>
+    <code class="php">
+        /**
+         * [index description]
+         * @return {[type]} [description]
+         */
+        public function index() {
+            return $this->fetch();
+        }
+    </code>
+</pre>
+
+<pre class="layui-code">
+// 代码区域
+var a = 'hello layui';
+</pre>
+
+<script src="/plugin/layui/layui.js"></script>
+<script type="text/javascript">
+    
+    layui.use('code', function(){ //加载code模块
+        layui.code({
+                title: 'NotePad++的风格',
+                skin: 'notepad', //如果要默认风格，不用设定该key。
+                encode: true, //是否转义html标签。默认不开启
+        }); //引用code方法
+    });
+</script>
+
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">资讯正文</label>
+    <div class="layui-input-block">
+        <script id="content" name="content" type="text/plain"></script>
+    </div>
+</div>
+
+<!-- ueditor -->
+<script type="text/javascript" src="/plugin/ueditor/ueditor.config.js"></script><!-- 配置文件 -->
+<script type="text/javascript" src="/plugin/ueditor/ueditor.all.js"></script><!-- 编辑器源码文件 -->
+<script type="text/javascript">
+    // 实例化编辑器
+    var URL = "/plugin/ueditor/";
+    var ue = UE.getEditor('content',{
+        serverUrl: URL + "php/controller.php"// 服务器统一请求接口路径
+        ,autoHeightEnabled: true
+        ,autoFloatEnabled: true
+        ,initialFrameWidth:1000  //初始化编辑器宽度,默认1000
+        ,initialFrameHeight:400  //初始化编辑器高度,默认320
+        // xss 过滤是否开启,inserthtml等操作
+        ,xssFilterRules: true
+        //input xss过滤
+        ,inputXssFilter: true
+        //output xss过滤
+        ,outputXssFilter: true
+        ,imageScaleEnabled: true
+        ,toolbars: [[
+            'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough',  'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion', 'scrawl',  'map',  'pagebreak', 'template', 'background', '|',
+            'horizontal', 'date', 'time'
+        ]]
+    });
+</script>
+<!-- ueditor 结束 -->
+</body>
+</html>

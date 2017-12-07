@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件判断标签</title>
+</head>
+<body>
+	{switch name="Think.get.lv"}
+		{case value="1"}<p>1</p>{/case}
+		{case value="2"}<p>2</p>{/case}
+		{case value="3|4"}<p>3</p>{/case}
+		{default /} <p>呵呵</p>
+	{/switch}
+
+	<!-- in, notin, between, notbetween -->
+	{range name="Think.get.lv" value="1,2,3" type="in"}
+		<p>lv在1,2,3中</p>
+	{else /}
+		<p>不在</p>
+	{/range}
+
+	{range name="Think.get.lv" value="1,2,3" type="notin"}
+		<p>不在</p>
+	{else /}
+		<p>lv在1,2,3中</p>
+	{/range}
+
+	{range name="Think.get.lv" value="1,9" type="between"}
+		<p>在</p>
+	{else /}
+		<p>不在</p>
+	{/range}
+
+	{notin name="Think.get.lv" value="1,2,3"}
+		<p>不在</p>
+	{else /}
+		<p>lv在1,2,3中</p>
+	{/notin}
+
+	{between name="Think.get.lv" value="1,9"}
+		<p>在</p>
+	{else /}
+		<p>不在</p>
+	{/between}
+
+
+	<!-- defined -->
+	{defined name="APP_PATH_NO"}
+		<P>APP_PATH_NO已经定义</P>
+	{else /}
+		<P>APP_PATH_NO未定义</P>
+	{/defined}
+
+
+	{if condition="($Think.get.lv == 1)"}
+		<P>=1</P>
+	{else /}
+		<P>!=1</P>
+	{/if}
+
+	{if condition="($Think.get.lv == 1) AND ($Think.get.id == 1)"}
+		<P>=1</P>
+	{else /}
+		<P>!=1</P>
+	{/if}
+
+	{if condition="($Think.get.lv == 1) OR ($Think.get.id == 1)"}
+		<P>=1</P>
+	{else /}
+		<P>!=1</P>
+	{/if}
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>比较标签</title>
+</head>
+<body>
+	<!-- 变量$a的值是否与value, 也就是与10是否相等 -->
+	{eq name="a" value="10"}
+		<p>相等</p>
+	{else/}
+		<p>不相等</p>
+	{/eq}
+	{eq name="a" value="$b"}
+		<p>相等</p>
+	{else/}
+		<p>不相等</p>
+	{/eq}
+
+	{equal name="a" value="8"}
+		<p>相等</p>
+	{else/}
+		<p>不相等</p>
+	{/equal}
+	
+	<!-- neq notequal -->
+	{neq name="a" value="10"}
+		<p>不相等</p>
+	{else/}
+		<p>相等</p>
+	{/neq}
+
+	{notequal name="a" value="10"}
+		<p>不相等</p>
+	{else/}
+		<p>相等</p>
+	{/notequal}
+
+	<!-- gt -->
+	{gt name="a" value="9"}
+		<p>正确</p>
+	{else/}
+		<p>错误</p>
+	{/gt}
+
+	<!-- egt -->
+	{egt name="a" value="10"}
+		<p>正确</p>
+	{else/}
+		<p>错误</p>
+	{/egt}
+
+	<!-- lt -->
+	{lt name="a" value="9"}
+		<p>正确</p>
+	{else/}
+		<p>错误</p>
+	{/lt}
+
+	<!-- elt -->
+	{elt name="a" value="10"}
+		<p>正确</p>
+	{else/}
+		<p>错误</p>
+	{/elt}
+</body>
+</html>

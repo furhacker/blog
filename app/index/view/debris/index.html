@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>随言碎语</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="__FCSS__/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__FCSS__/main.css">
+    <style type="text/css">.page .left ul li {color: #6d6b6b;}</style>
+    <style type="text/css">
+        .bg { margin:0px; } /*  下雨  */
+        .page .left ul li.title {
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="pace-done bg">
+
+{include file="common/header" /}
+
+<div class="page clearfix">
+    <div class="left" style="background-image: url(__FIMG__/5768c606cf9cb.jpg);">
+        <?php
+            $str = '';
+            foreach ($debrisList as $k => $v) {
+                $str .= '
+                <ul>
+                    <li class="title">'.$v['gmt_create'].'</li>
+                    <li>'.$v['content'].'</li>
+                </ul>';
+            }
+            echo $str;
+        ?>
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap" style="width: 265px;">
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Time
+                </div>
+                <ul id="content-side" class="content-ul" style="max-height: 463px;">
+                    <li><a class="scroll" href="">2017 (1)</a></li>
+                    <li><a class="scroll" href="">2016 (3)</a></li> 
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+        </div>
+    </div>
+</div>
+
+<script src="__FJS__/pageContent.js" charset="utf-8"></script>
+
+{include file="common/footer" /}
+<!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+
+<div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src="__FJS__/main.js" charset="utf-8"></script>
+    <script src="__FJS__/scroll.min.js" charset="utf-8"></script>
+</body>
+</html>

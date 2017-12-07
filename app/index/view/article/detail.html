@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>FurHacker</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+
+    <link rel="stylesheet" href="__FCSS__/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__FCSS__/main.css">
+    <script src="__FJS__/hm.js"></script>
+</head>
+<body>
+
+{include file="common/header" /}
+
+<div class="page clearfix" index="">
+
+    <div class="left">
+        <h2 style="border-bottom: none;"><!-- 标题 -->
+            {$detail.title}
+        </h2>
+        <div class="label" style="border-bottom: 1px solid #eee; margin-bottom: 15px;padding-bottom: 5px;">
+            <div class="label-card">
+                <i class="fa fa-calendar"></i> {$detail.gmt_create|mb_substr=###,0,10}<!-- 创建日期 -->
+                &nbsp;&nbsp;
+                <i class="fa fa-user"></i> {$detail.author}<!-- 作者 -->
+                &nbsp;&nbsp;
+                <i class="fa fa-th-list"></i><!-- 分类 -->
+                <a href="" title="Category: 高并发" rel="category">高并发</a>
+                &nbsp;&nbsp;
+                <i class="fa fa-tags"></i><!-- 标签 -->
+                <a href="" title="Tag: 高并发" rel="tag">高并发</a>&nbsp;
+                <a href="" title="Tag: 接口" rel="tag">接口</a>
+            </div>
+        </div>
+        {$detail.content}
+    </div>
+    
+    <div class="right">
+        <div class="wrap">
+            <style>
+
+            </style>
+            <!-- /static/front/mp3/ycmd.mp3 -->
+            <!-- 网易音乐 -->
+            <audio style="width: 265px;margin-bottom: 18px;background-color: #f8f8fd; box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3), 0 0 30px rgba(10, 10, 0, 0.1) inset;"  controls="controls" loop="false" preload="auto" src="/static/front/mp3/ycmd.mp3">
+                  你的浏览器不支持audio标签
+            </audio>
+
+            <div class="side">
+                <div>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    Recent Posts
+                </div>
+                <ul class="content-ul" recent="">
+                    <li><a href="">高并发业务接口开发思路(实战)</a></li>
+                    <li><a href="">再见2016，你好2017</a></li>
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <div class="side ">
+                <div>
+                    <i class="fa fa-th-list"></i>
+                    Categories
+                </div>
+                <ul class="content-ul" cate="">
+                    
+                    <li>
+                        <a href="" class="categories-list-item" cate="jekyll">
+                            <span class="name">
+                                jekyll
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="" class="categories-list-item" cate="高并发">
+                            <span class="name">
+                                高并发
+                            </span>
+                            <span class="badge">4</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="" class="categories-list-item" cate="安全">
+                            <span class="name">
+                                安全
+                            </span>
+                            <span class="badge">3</span>
+                        </a>
+                    </li>                    
+                    <li>
+                        <a href="" class="categories-list-item" cate="总结2016">
+                            <span class="name">
+                                总结2016
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <div class="side">
+                <div>
+                    <i class="fa fa-tags"></i>
+                    Tags
+                </div>
+                <div class="tags-cloud">
+                    <a href="" style="font-size: 9pt; color: #999;">jekyll</a> 
+                    <a href="" style="font-size: 9pt; color: #999;">端口</a>
+                </div>
+            </div>
+            <!-- <div class="side">
+                <div>
+                    <i class="fa fa-external-link"></i>
+                    Links
+                </div>
+                <ul  class="content-ul">
+
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+{include file="common/footer" /}
+
+<div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src="__FJS__/main.js" charset="utf-8"></script>
+    <script src="__FJS__/scroll.min.js" charset="utf-8"></script>
+</body>
+</html>

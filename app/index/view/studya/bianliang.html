@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量</title>
+</head>
+<body>
+	<p>{ $email }</p>
+
+	<p>{literal} {$email} {/literal}</p>
+	{literal}<p> {$email} </p>{/literal}
+	<p>{$email|default="17771258@qq.com"}</p>
+
+	<p>{$email} - {$email|md5}</p>
+
+	<p>{$email} - {$email|md5|strtoupper}</p>
+
+	<p>{$email} - {$email|substr=0,8}</p>
+	<p>{$email} - {$email|substr=###,0,8}</p>
+
+	<p>{$time} - {$time|date="Y-m-d", ###}</p>
+
+	<p>a+b= {$a+$b}</p>
+	<p>a-b= {$a-$b}</p>
+	<p>a*b= {$a*$b}</p>
+	<p>a/b= {$a/$b}</p>
+	<p>b%a= {$b%$a}</p>
+	
+	<p>a++ = {$a++}</p>
+
+	{/* 这里是注释 - 在前台和源码中都不显示 */}
+	<!-- 而这个就能看见 -->
+</body>
+</html>
